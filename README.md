@@ -35,6 +35,7 @@ HikariCP | 数据库连接池
 Docker | 容器化引擎 
 Docker Compose | 容器编排工具 
 Kubernetes | 容器编排系统 
+TiDB | 分布式数据库 
 
 ## 前端技术
 
@@ -80,3 +81,118 @@ Spring Security oAuth2 |
 权限管理 | 添加权限、删除权限、修改权限、以树形结构返回权限 | 
 角色管理 | 添加角色、删除角色、更新角色、角色列表、获取角色权限、修改角色权限 | 
 成员管理 | CRUD、为成员分配角色、获取成员角色、权限分配、获取权限列表 | 
+
+## 前台功能清单
+
+规划中...
+
+## 基础设施规划
+
+### Docker
+
+服务 | 主机名 | IP/端口 | CPU/MEM | 说明 
+----|----|----|----|----
+GitLab | docker-gitlab | 192.168.141.200:80 | 2 核 2G | 代码管理 
+Nexus | docker-nexus | 192.168.141.201:80 | 2 核 2G | 依赖管理 
+Harbor | docker-harbor | 192.168.141.202:80 | 2 核 2G | 镜像管理 
+ZenTao | docker-zentao | 192.168.141.203:80 | 2 核 2G | 项目管理 
+
+### Kubernetes
+
+| 主机名               | IP                 | 角色   | CPU/MEM | 磁盘     |
+| -------------------- | ------------------ | ------ | ------- | -------- |
+| kubernetes\-master   | 192\.168\.141\.110 | Master | 2 核 2G | 20G      |
+| kubernetes\-node\-01 | 192\.168\.141\.120 | Node   | 2 核 4G | 20G      |
+| kubernetes\-node\-02 | 192\.168\.141\.121 | Node   | 2 核 4G | 20G      |
+| kubernetes\-node\-03 | 192\.168\.141\.122 | Node   | 2 核 4G | 20G      |
+| kubernetes-volumes   | 192.168.141.130    | NFS    | 2 核 2G | 按需扩容 |
+
+## 容器部署配置
+
+### GItLab
+
+```yaml
+version: '3'
+services:
+    web:
+      image: 'twang2218/gitlab-ce-zh'
+      restart: always
+      hostname: '192.168.141.200'
+      environment:
+        TZ: 'Asia/Shanghai'
+        GITLAB_OMNIBUS_CONFIG: |
+          external_url 'http://192.168.141.200'
+          gitlab_rails['gitlab_shell_ssh_port'] = 2222
+          unicorn['port'] = 8888
+          nginx['listen_port'] = 80
+      ports:
+        - '80:80'
+        - '443:443'
+        - '2222:22'
+      volumes:
+        - ./config:/etc/gitlab
+        - ./data:/var/opt/gitlab
+        - ./logs:/var/log/gitlab
+```
+
+### Nexus
+
+- **账号：** admin
+- **密码：** `cat /var/lib/docker/volumes/nexus_data/_data/admin.password`
+
+```yaml
+version: '3.1'
+services:
+  nexus:
+    restart: always
+    image: sonatype/nexus3
+    container_name: nexus
+    ports:
+      - 80:8081
+    volumes:
+      - data:/nexus-data
+
+volumes:
+  data:
+```
+
+### Harbor
+
+[官方 GitHub](https://github.com/goharbor/harbor) 上下载最新离线安装版（我已经下载并放置在群分享的 **Linux** 目录下）并上传至服务器
+
+- **账号：** admin
+- **密码：** Harbor12345
+
+```bash
+# 解压
+tar -zxvf harbor-offline-installer-v1.8.0.tgz
+
+# 修改
+cd harbor
+vi harbor.yml
+hostname: 192.168.141.202
+
+# 安装
+./install.sh
+```
+
+### 禅道
+
+- 禅道开源版：http://dl.cnezsoft.com/zentao/docker/docker_zentao.zip
+- 下载并解压后将目录名修改为 `build`，再通过 Compose 构建
+
+```yaml
+version: '3.1'
+services:
+  zendao:
+    build: build
+    restart: always
+    container_name: zendao
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/app/zentaopms
+      - ./data:/var/lib/mysql
+```
