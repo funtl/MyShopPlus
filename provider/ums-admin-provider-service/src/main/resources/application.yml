@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: ums-admin-provider
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.141.110:4000/mplus_ums_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password:
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+dubbo:
+  scan:
+    base-packages: com.funtl.myshop.plus.provider.service
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://nacos.funtl.com
+    port: 80
+
+mybatis:
+  type-aliases-package: com.funtl.myshop.plus.provider.domain
+  mapper-locations: classpath:mapper/*.xml

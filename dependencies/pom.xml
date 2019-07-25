@@ -14,6 +14,7 @@
         <dubbo.version>2.7.2</dubbo.version>
         <dubbo-kryo.version>2.7.2</dubbo-kryo.version>
         <dubbo-actuator.version>2.7.1</dubbo-actuator.version>
+        <spring-boot-mapper.version>2.1.5</spring-boot-mapper.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <spring-cloud-alibaba.verion>0.9.0.RELEASE</spring-cloud-alibaba.verion>
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
@@ -109,6 +110,11 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${spring-boot-mapper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

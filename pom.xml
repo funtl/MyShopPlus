@@ -18,6 +18,8 @@
 
     <modules>
         <module>dependencies</module>
+        <module>provider</module>
+        <module>consumer</module>
     </modules>
 
     <properties>
