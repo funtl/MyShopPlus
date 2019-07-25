@@ -19,7 +19,7 @@
     <modules>
         <module>dependencies</module>
         <module>provider</module>
-        <module>consumer</module>
+        <module>business</module>
     </modules>
 
     <properties>
