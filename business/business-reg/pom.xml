@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ums-admin-provider-service</artifactId>
+    <artifactId>business-reg</artifactId>
     <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
@@ -33,7 +33,11 @@
         <!-- Spring Boot Begin -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,7 +49,7 @@
         <!-- Spring Cloud Begin -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <!-- Spring Cloud End -->
 
@@ -101,33 +105,12 @@
         </dependency>
         <!-- Apache Dubbo End -->
 
-        <!-- DataSource Begin -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-            <exclusions>
-                <!-- 排除 tomcat-jdbc 以使用 HikariCP -->
-                <exclusion>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>tomcat-jdbc</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-        </dependency>
-        <!-- DataSource End -->
-
         <!-- Projects Begin -->
+        <dependency>
+            <groupId>com.funtl.myshop.plus</groupId>
+            <artifactId>commons-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.funtl.myshop.plus</groupId>
             <artifactId>ums-admin-provider-api</artifactId>
@@ -142,7 +125,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.funtl.myshop.plus.provider.UmsAdminProviderApplication</mainClass>
+                    <mainClass>com.funtl.myshop.plus.business.BusinessRegApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

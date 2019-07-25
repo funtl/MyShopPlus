@@ -18,6 +18,7 @@
 
     <modules>
         <module>dependencies</module>
+        <module>commons</module>
         <module>provider</module>
         <module>business</module>
     </modules>

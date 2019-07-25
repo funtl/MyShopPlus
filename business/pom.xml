@@ -28,4 +28,8 @@
             <email>lee.lusifer@gmail.com</email>
         </developer>
     </developers>
+
+    <modules>
+        <module>business-reg</module>
+    </modules>
 </project>

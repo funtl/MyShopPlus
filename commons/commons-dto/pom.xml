@@ -5,11 +5,11 @@
 
     <parent>
         <groupId>com.funtl.myshop.plus</groupId>
-        <artifactId>provider</artifactId>
+        <artifactId>commons</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ums-admin-provider-api</artifactId>
+    <artifactId>commons-dto</artifactId>
     <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
@@ -33,10 +33,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
         </dependency>
     </dependencies>
 </project>

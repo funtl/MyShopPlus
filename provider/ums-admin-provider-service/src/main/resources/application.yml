@@ -5,7 +5,7 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.141.110:4000/mplus_ums_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password:
