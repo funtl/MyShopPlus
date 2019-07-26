@@ -3,6 +3,7 @@ package com.funtl.myshop.plus.provider.tests;
 import com.funtl.myshop.plus.provider.api.UmsAdminService;
 import com.funtl.myshop.plus.provider.domain.UmsAdmin;
 import com.funtl.myshop.plus.provider.mapper.UmsAdminMapper;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -54,8 +53,8 @@ public class UmsAdminTests {
         umsAdmin.setLoginTime(new Date());
         umsAdmin.setStatus(0);
 
-        int insert = umsAdminService.insert(umsAdmin);
-        assertEquals(insert, 1);
+        int result = umsAdminService.insert(umsAdmin);
+        Assert.assertEquals(result, 1);
     }
 
 }

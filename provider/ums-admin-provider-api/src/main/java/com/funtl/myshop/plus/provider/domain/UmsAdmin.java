@@ -9,6 +9,18 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 系统用户
+ * <p>
+ * Description:
+ * </p>
+ *
+ * @author Lusifer
+ * @version v1.0.0
+ * @date 2019-07-26 09:39:06
+ * @see com.funtl.myshop.plus.provider.domain
+ *
+ */
 @Data
 @Table(name = "ums_admin")
 public class UmsAdmin implements Serializable {

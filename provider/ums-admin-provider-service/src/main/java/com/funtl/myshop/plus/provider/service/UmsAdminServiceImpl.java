@@ -18,7 +18,7 @@ import java.util.Date;
  *
  * @author Lusifer
  * @version v1.0.0
- * @date 2019-07-26 04:15:19
+ * @date 2019-07-26 09:41:08
  * @see com.funtl.myshop.plus.provider.service
  */
 @Service(version = "1.0.0")
@@ -32,17 +32,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public int insert(UmsAdmin umsAdmin) {
-        // 初始化注册与登录时间
-        umsAdmin.setCreateTime(new Date());
-        umsAdmin.setLoginTime(new Date());
-
-        // 状态为 null 则设置为禁止
-        if (umsAdmin.getStatus() == null) {
-            umsAdmin.setStatus(0);
-        }
-
-        // 设置密码加密
-        umsAdmin.setPassword(passwordEncoder.encode(umsAdmin.getPassword()));
+        // 初始化用户对象
+        initUmsAdmin(umsAdmin);
         return umsAdminMapper.insert(umsAdmin);
     }
 
@@ -56,5 +47,24 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public UmsAdmin get(UmsAdmin umsAdmin) {
         return umsAdminMapper.selectOne(umsAdmin);
+    }
+
+    /**
+     * 初始化用户对象
+     *
+     * @param umsAdmin {@link UmsAdmin}
+     */
+    private void initUmsAdmin(UmsAdmin umsAdmin) {
+        // 初始化创建时间
+        umsAdmin.setCreateTime(new Date());
+        umsAdmin.setLoginTime(new Date());
+
+        // 初始化状态
+        if (umsAdmin.getStatus() == null) {
+            umsAdmin.setStatus(0);
+        }
+
+        // 密码加密
+        umsAdmin.setPassword(passwordEncoder.encode(umsAdmin.getPassword()));
     }
 }

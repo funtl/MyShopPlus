@@ -11,15 +11,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
- * 用户注册
+ * 用户注册.
  * <p>
  * Description:
  * </p>
  *
  * @author Lusifer
  * @version v1.0.0
- * @date 2019-07-26 04:38:50
+ * @date 2019-07-26 11:24:44
  * @see com.funtl.myshop.plus.business.controller
  */
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -31,40 +33,43 @@ public class RegController {
     private UmsAdminService umsAdminService;
 
     /**
-     * 用户注册
+     * 注册
      *
      * @param umsAdmin {@link UmsAdmin}
-     * @return 成功则返回新注册用户信息
+     * @return {@link ResponseResult}
      */
     @PostMapping(value = "")
     public ResponseResult<UmsAdmin> reg(@RequestBody UmsAdmin umsAdmin) {
         String message = validateReg(umsAdmin);
 
-        // 验证通过
+        // 通过验证
         if (message == null) {
             int result = umsAdminService.insert(umsAdmin);
 
             // 注册成功
             if (result > 0) {
                 UmsAdmin admin = umsAdminService.get(umsAdmin.getUsername());
-                return new ResponseResult<UmsAdmin>(HttpStatus.OK.value(), "新用户注册成功", admin);
+                return new ResponseResult<UmsAdmin>(HttpStatus.OK.value(), "用户注册成功", admin);
             }
         }
 
-        return new ResponseResult<UmsAdmin>(HttpStatus.NOT_ACCEPTABLE.value(), message != null ? message : "新用户注册失败");
+        return new ResponseResult<UmsAdmin>(HttpStatus.NOT_ACCEPTABLE.value(), message != null ? message : "用户注册失败");
     }
 
     /**
-     * 验证注册信息
+     * 注册信息验证
+     *
      * @param umsAdmin {@link UmsAdmin}
-     * @return 错误信息
+     * @return 验证结果
      */
     private String validateReg(UmsAdmin umsAdmin) {
         UmsAdmin admin = umsAdminService.get(umsAdmin.getUsername());
+
         if (admin != null) {
             return "用户名已存在，请重新输入";
         }
 
         return null;
     }
+
 }
