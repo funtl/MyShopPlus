@@ -20,7 +20,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * @version v1.0.0
  * @date 2019-07-28 17:55:49
  * @see com.funtl.myshop.plus.business.configure
- *
  */
 @Configuration
 @EnableAuthorizationServer
@@ -51,6 +50,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     /**
      * 配置客户端
+     *
      * @param clients
      * @throws Exception
      */

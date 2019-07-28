@@ -3,11 +3,10 @@ package com.funtl.myshop.plus.business.configure;
 import com.funtl.myshop.plus.business.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -59,14 +58,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // 解决跨域问题
-        http.requestMatchers()
-                // 不拦截 OPTIONS 请求
-                .antMatchers(HttpMethod.OPTIONS, "/oauth/**")
-                .and()
-                .cors()
-                .and()
-                .csrf().disable();
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/user/login");
     }
 }
