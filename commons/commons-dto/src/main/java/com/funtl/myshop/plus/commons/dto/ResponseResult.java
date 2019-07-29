@@ -14,6 +14,7 @@ import java.io.Serializable;
  * @version v1.0.0
  * @date 2019-07-26 04:43:54
  * @see com.funtl.myshop.plus.commons.dto
+ *
  */
 @Data
 public class ResponseResult<T> implements Serializable {
@@ -66,6 +67,14 @@ public class ResponseResult<T> implements Serializable {
         super();
         this.code = code;
         this.message = message;
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
         this.data = data;
     }
 

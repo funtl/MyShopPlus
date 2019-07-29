@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OAuth2Tests {
+public class BusinessOAuth2Tests {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;

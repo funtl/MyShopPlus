@@ -13,15 +13,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * 认证服务器安全配置
+ * 安全配置
  * <p>
  * Description:
  * </p>
  *
  * @author Lusifer
  * @version v1.0.0
- * @date 2019-07-28 17:56:56
+ * @date 2019-07-29 13:27:43
  * @see com.funtl.myshop.plus.business.configure
+ *
  */
 @Configuration
 @EnableWebSecurity
@@ -30,19 +31,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        // 配置默认的加密方式
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     @Override
-    protected UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsServiceBean() throws Exception {
         return new UserDetailsServiceImpl();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService());
+        auth.userDetailsService(userDetailsServiceBean());
     }
 
     /**

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2002-2019 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.funtl.myshop.plus.business.configure;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +27,16 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 /**
- * 配置认证服务器
+ * 认证服务器
  * <p>
  * Description:
  * </p>
  *
  * @author Lusifer
  * @version v1.0.0
- * @date 2019-07-28 17:55:49
+ * @date 2019-07-29 13:27:21
  * @see com.funtl.myshop.plus.business.configure
+ *
  */
 @Configuration
 @EnableAuthorizationServer
@@ -50,7 +67,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     /**
      * 配置客户端
-     *
      * @param clients
      * @throws Exception
      */
