@@ -5,12 +5,12 @@
 
     <parent>
         <groupId>com.funtl.myshop.plus</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>commons</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>commons</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>commons-utils</artifactId>
+    <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
 
@@ -29,8 +29,16 @@
         </developer>
     </developers>
 
-    <modules>
-        <module>commons-dto</module>
-        <module>commons-utils</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
