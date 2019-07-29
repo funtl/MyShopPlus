@@ -141,6 +141,11 @@ public class ResponseResult<T> implements Serializable {
         public static final int OK = 20000;
 
         /**
+         * 非法请求
+         */
+        public static final int ILLEGAL_REQUEST = 50000;
+
+        /**
          * 非法令牌
          */
         public static final int ILLEGAL_TOKEN = 50008;

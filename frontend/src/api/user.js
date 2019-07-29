@@ -8,17 +8,23 @@ export function login(data) {
   })
 }
 
+/**
+ * 此处将 params: { token } -> params: { access_token: token }
+ * 用以适配我们后台
+ * @param token
+ */
 export function getInfo(token) {
   return request({
     url: '/user/info',
     method: 'get',
-    params: { token }
+    params: { access_token: token }
   })
 }
 
-export function logout() {
+export function logout(token) {
   return request({
     url: '/user/logout',
-    method: 'post'
+    method: 'post',
+    params: { access_token: token }
   })
 }
