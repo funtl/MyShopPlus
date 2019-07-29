@@ -7,14 +7,13 @@ import com.funtl.myshop.plus.commons.utils.OkHttpClientUtil;
 import com.google.common.collect.Maps;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 登录管理
@@ -34,41 +33,39 @@ public class LoginController {
     private static final String URL_OAUTH_TOKEN = "http://localhost:9001/oauth/token";
 
     @Value("${business.oauth2.grant_type}")
-    public String oauth2_grant_type;
+    public String oauth2GrantType;
 
     @Value("${business.oauth2.client_id}")
-    public String oauth2_client_id;
+    public String oauth2ClientId;
 
     @Value("${business.oauth2.client_secret}")
-    public String oauth2_client_secret;
+    public String oauth2ClientSecret;
 
     @PostMapping(value = "/user/login")
     public ResponseResult<Map<String, Object>> login(@RequestBody LoginParam loginParam) {
-		// 封装返回的结果集
+        // 封装返回的结果集
         Map<String, Object> result = Maps.newHashMap();
 
-		// 通过 HTTP 客户端请求登录接口
+        // 通过 HTTP 客户端请求登录接口
         Map<String, String> params = Maps.newHashMap();
         params.put("username", loginParam.getUsername());
         params.put("password", loginParam.getPassword());
-        params.put("grant_type", oauth2_grant_type);
-        params.put("client_id", oauth2_client_id);
-        params.put("client_secret", oauth2_client_secret);
+        params.put("grant_type", oauth2GrantType);
+        params.put("client_id", oauth2ClientId);
+        params.put("client_secret", oauth2ClientSecret);
 
         try {
-			// 解析响应结果封装并返回
+            // 解析响应结果封装并返回
             Response response = OkHttpClientUtil.getInstance().postData(URL_OAUTH_TOKEN, params);
-            String jsonString = response.body().string();
+            String jsonString = Objects.requireNonNull(response.body()).string();
             Map<String, Object> jsonMap = MapperUtils.json2map(jsonString);
             String token = String.valueOf(jsonMap.get("access_token"));
             result.put("token", token);
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return new ResponseResult<Map<String, Object>>(20000, "登录成功", result);
+        return new ResponseResult<Map<String, Object>>(ResponseResult.CodeStatus.OK, "登录成功", result);
     }
 
 }

@@ -14,7 +14,6 @@ import java.io.Serializable;
  * @version v1.0.0
  * @date 2019-07-26 04:43:54
  * @see com.funtl.myshop.plus.commons.dto
- *
  */
 @Data
 public class ResponseResult<T> implements Serializable {
@@ -122,5 +121,38 @@ public class ResponseResult<T> implements Serializable {
             return false;
         }
         return true;
+    }
+
+    /**
+     * 通用状态码
+     * <p>
+     * Description:
+     * </p>
+     *
+     * @author Lusifer
+     * @version v1.0.0
+     * @date 2019-07-30 05:02:49
+     * @see com.funtl.myshop.plus.commons.dto
+     */
+    public class CodeStatus {
+        /**
+         * 请求成功
+         */
+        public static final int OK = 20000;
+
+        /**
+         * 非法令牌
+         */
+        public static final int ILLEGAL_TOKEN = 50008;
+
+        /**
+         * 其他客户登录
+         */
+        public static final int OTHER_CLIENTS_LOGGED_IN = 50012;
+
+        /**
+         * 令牌已过期
+         */
+        public static final int TOKEN_EXPIRED = 50014;
     }
 }
