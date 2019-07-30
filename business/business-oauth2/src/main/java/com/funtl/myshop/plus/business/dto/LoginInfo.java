@@ -20,5 +20,4 @@ import java.io.Serializable;
 public class LoginInfo implements Serializable {
     private String name;
     private String avatar;
-    private String token;
 }

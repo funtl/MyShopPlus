@@ -106,9 +106,7 @@ public class LoginController {
      * @return {@link ResponseResult}
      */
     @GetMapping(value = "/user/info")
-    public ResponseResult<LoginInfo> info(HttpServletRequest request) {
-        // 获取 token
-        String token = request.getParameter("access_token");
+    public ResponseResult<LoginInfo> info() {
         // 获取认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -116,7 +114,6 @@ public class LoginController {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setName(authentication.getName());
         loginInfo.setAvatar("");
-        loginInfo.setToken(token);
         return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK, "获取用户信息", loginInfo);
     }
 
