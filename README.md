@@ -61,6 +61,7 @@ Spring Security oAuth2 | ✔
 TkMyBatis | ✔ 
 HikariCP | ✔ 
 OKHttp3 | ✔ 
+Feign 传递 Token | ✔ 
 
 ## 后台功能清单
 
@@ -77,7 +78,7 @@ OKHttp3 | ✔
 
 功能 | 完成 
 ----|----
-查看个人信息 |  
+查看个人信息 | ✔ 
 编辑个人信息 |  
 
 ### 权限管理
