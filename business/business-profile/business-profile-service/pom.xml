@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-oauth2</artifactId>
+    <artifactId>business-profile-service</artifactId>
     <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
@@ -109,31 +109,10 @@
         </dependency>
         <!-- Apache Dubbo End -->
 
-        <!-- Commons Begin -->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-        </dependency>
-        <!-- Commons End -->
-
         <!-- Projects Begin -->
         <dependency>
             <groupId>com.funtl.myshop.plus</groupId>
             <artifactId>commons-dto</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.funtl.myshop.plus</groupId>
-            <artifactId>commons-utils</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.funtl.myshop.plus</groupId>
-            <artifactId>configuration-feign</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
@@ -155,7 +134,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.funtl.myshop.plus.business.BusinessOAuth2Application</mainClass>
+                    <mainClass>com.funtl.myshop.plus.business.BusinessProfileApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

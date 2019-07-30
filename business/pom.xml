@@ -32,5 +32,6 @@
     <modules>
         <module>business-reg</module>
         <module>business-oauth2</module>
+        <module>business-profile</module>
     </modules>
 </project>

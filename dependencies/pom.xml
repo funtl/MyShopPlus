@@ -12,6 +12,7 @@
     <properties>
         <!-- Commons -->
         <okhttp3.version>4.0.1</okhttp3.version>
+        <feign-okhttp.version>10.2.3</feign-okhttp.version>
 
         <!-- Native Cloud -->
         <dubbo.version>2.7.2</dubbo.version>
@@ -130,6 +131,11 @@
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>${okhttp3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-okhttp</artifactId>
+                <version>${feign-okhttp.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

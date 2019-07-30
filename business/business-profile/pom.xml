@@ -5,12 +5,12 @@
 
     <parent>
         <groupId>com.funtl.myshop.plus</groupId>
-        <artifactId>provider</artifactId>
+        <artifactId>business</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ums-admin-provider-api</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>business-profile</artifactId>
+    <packaging>pom</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
 
@@ -29,19 +29,8 @@
         </developer>
     </developers>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>business-profile-feign</module>
+        <module>business-profile-service</module>
+    </modules>
 </project>

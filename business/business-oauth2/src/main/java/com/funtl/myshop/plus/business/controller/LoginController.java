@@ -2,9 +2,11 @@ package com.funtl.myshop.plus.business.controller;
 
 import com.funtl.myshop.plus.business.dto.LoginInfo;
 import com.funtl.myshop.plus.business.dto.LoginParam;
+import com.funtl.myshop.plus.business.feign.ProfileFeign;
 import com.funtl.myshop.plus.commons.dto.ResponseResult;
 import com.funtl.myshop.plus.commons.utils.MapperUtils;
 import com.funtl.myshop.plus.commons.utils.OkHttpClientUtil;
+import com.funtl.myshop.plus.provider.domain.UmsAdmin;
 import com.google.common.collect.Maps;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,6 +63,9 @@ public class LoginController {
     @Resource
     public TokenStore tokenStore;
 
+    @Resource
+    private ProfileFeign profileFeign;
+
     /**
      * 登录
      *
@@ -106,14 +111,18 @@ public class LoginController {
      * @return {@link ResponseResult}
      */
     @GetMapping(value = "/user/info")
-    public ResponseResult<LoginInfo> info() {
+    public ResponseResult<LoginInfo> info() throws Exception {
         // 获取认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        // 获取个人信息
+        String jsonString = profileFeign.info(authentication.getName());
+        UmsAdmin umsAdmin = MapperUtils.json2pojoByTree(jsonString, "data", UmsAdmin.class);
+
         // 封装并返回结果
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setName(authentication.getName());
-        loginInfo.setAvatar("");
+        loginInfo.setName(umsAdmin.getNickName());
+        loginInfo.setAvatar(umsAdmin.getIcon());
         return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK, "获取用户信息", loginInfo);
     }
 

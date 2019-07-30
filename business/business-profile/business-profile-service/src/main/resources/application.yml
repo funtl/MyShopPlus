@@ -1,6 +1,6 @@
 spring:
   application:
-    name: business-oauth2
+    name: business-profile
   main:
     allow-bean-definition-overriding: true
   jackson:
@@ -11,9 +11,19 @@ spring:
       discovery:
         server-addr: nacos.funtl.com:80
 
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:9001/oauth/token
+      user-authorization-uri: http://localhost:9001/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9001/oauth/check_token
+
 dubbo:
   scan:
-    base-packages: com.funtl.myshop.plus.business.controller, com.funtl.myshop.plus.business.service
+    base-packages: com.funtl.myshop.plus.business.controller
   protocol:
     name: dubbo
     port: -1
@@ -22,23 +32,11 @@ dubbo:
     address: nacos://nacos.funtl.com
     port: 80
 
-feign:
-  okhttp:
-    enabled: true
-  httpclient:
-    enabled: false
-
 server:
-  port: 9001
+  port: 9002
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-business:
-  oauth2:
-    grant_type: password
-    client_id: client
-    client_secret: secret

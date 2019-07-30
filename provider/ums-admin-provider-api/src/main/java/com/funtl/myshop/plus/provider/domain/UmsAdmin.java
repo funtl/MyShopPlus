@@ -1,5 +1,6 @@
 package com.funtl.myshop.plus.provider.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -19,7 +20,6 @@ import java.util.Date;
  * @version v1.0.0
  * @date 2019-07-26 09:39:06
  * @see com.funtl.myshop.plus.provider.domain
- *
  */
 @Data
 @Table(name = "ums_admin")
@@ -62,12 +62,14 @@ public class UmsAdmin implements Serializable {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 最后登录时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "login_time")
     private Date loginTime;
 
