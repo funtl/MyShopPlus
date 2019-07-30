@@ -36,6 +36,7 @@ Docker | 容器化引擎
 Docker Compose | 容器编排工具 
 Kubernetes | 容器编排系统 
 TiDB | 分布式数据库 
+OKHttp3 | 轻量级网络框架 
 
 ## 前端技术
 
@@ -56,7 +57,10 @@ Vue Element Admin | 基于 Element UI 的前端后台解决方案
 Spring Boot | ✔
 Spring Cloud Alibaba | ✔ 
 Spring Cloud Alibaba Dubbo | ✔ 
-Spring Security oAuth2 | 
+Spring Security oAuth2 | ✔ 
+TkMyBatis | ✔ 
+HikariCP | ✔ 
+OKHttp3 | ✔ 
 
 ## 后台功能清单
 
@@ -64,9 +68,9 @@ Spring Security oAuth2 |
 
 功能 | 完成 
 ----|----
-用户注册 | 
-用户登录 | 
-获取 Token | 
+用户注册 | ✔ 
+用户登录 | ✔ 
+获取 Token | ✔ 
 刷新 Token | 
 
 ### 权限管理
@@ -84,7 +88,12 @@ Spring Security oAuth2 |
 
 ## 前台功能清单
 
-规划中...
+功能 | 完成 
+----|----
+用户注册 |  
+用户登录 | ✔ 
+获取 Token | ✔ 
+刷新 Token | 
 
 ## 基础设施规划
 
