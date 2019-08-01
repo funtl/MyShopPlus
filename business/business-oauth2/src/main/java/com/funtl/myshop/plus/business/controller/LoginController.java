@@ -10,6 +10,7 @@ import com.funtl.myshop.plus.provider.domain.UmsAdmin;
 import com.google.common.collect.Maps;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +18,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +39,6 @@ import java.util.Objects;
  * @date 2019-07-29 11:14:58
  * @see com.funtl.myshop.plus.business.controller
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class LoginController {
 
@@ -110,6 +109,7 @@ public class LoginController {
      *
      * @return {@link ResponseResult}
      */
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping(value = "/user/info")
     public ResponseResult<LoginInfo> info() throws Exception {
         // 获取认证信息
@@ -131,6 +131,7 @@ public class LoginController {
      *
      * @return {@link ResponseResult}
      */
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping(value = "/user/logout")
     public ResponseResult<Void> logout(HttpServletRequest request) {
         // 获取 token

@@ -1,5 +1,6 @@
 package com.funtl.myshop.plus.business.configure;
 
+import com.funtl.myshop.plus.business.controller.LoginController;
 import com.funtl.myshop.plus.business.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -68,13 +69,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /**
+         * 将授权访问配置改为注解方式
+         * @see LoginController#info()
+         */
         http.exceptionHandling()
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                // 授权访问
-                .antMatchers("/user/info").hasAuthority("USER")
-                .antMatchers("/user/logout").hasAuthority("USER");
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+//        http.exceptionHandling()
+//                .and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .authorizeRequests()
+//                // 授权访问
+//                .antMatchers("/user/info").hasAuthority("USER")
+//                .antMatchers("/user/logout").hasAuthority("USER");
     }
 }

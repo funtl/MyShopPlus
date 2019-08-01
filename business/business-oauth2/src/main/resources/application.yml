@@ -1,3 +1,9 @@
+base:
+  config:
+    nacos:
+      hostname: nacos.funtl.com
+      port: 80
+
 spring:
   application:
     name: business-oauth2
@@ -9,7 +15,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: nacos.funtl.com:80
+        server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
 
 dubbo:
   scan:
@@ -19,8 +25,8 @@ dubbo:
     port: -1
     serialization: kryo
   registry:
-    address: nacos://nacos.funtl.com
-    port: 80
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
 
 feign:
   okhttp:

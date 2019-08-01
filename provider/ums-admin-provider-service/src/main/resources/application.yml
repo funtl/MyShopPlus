@@ -1,3 +1,12 @@
+base:
+  config:
+    tidb:
+      hostname: tidb.funtl.com
+      port: 4000
+    nacos:
+      hostname: nacos.funtl.com
+      port: 80
+
 spring:
   application:
     name: ums-admin-provider
@@ -6,7 +15,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://tidb.funtl.com:4000/mplus_ums_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://${base.config.tidb.hostname}:${base.config.tidb.port}/mplus_ums_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password:
     hikari:
@@ -27,8 +36,8 @@ dubbo:
     port: -1
     serialization: kryo
   registry:
-    address: nacos://nacos.funtl.com
-    port: 80
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
 
 mybatis:
   type-aliases-package: com.funtl.myshop.plus.provider.domain
