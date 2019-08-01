@@ -51,8 +51,30 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '面板', icon: 'dashboard' }
     }]
+  },
+
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/profile',
+    name: 'User',
+    meta: { title: '个人信息', icon: 'user' },
+    children: [
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import('@/views/profile/index'),
+        meta: { title: '修改信息' }
+      },
+      {
+        path: 'password',
+        name: 'Password',
+        component: () => import('@/views/password/index'),
+        meta: { title: '修改密码' }
+      }
+    ]
   },
 
   {

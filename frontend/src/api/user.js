@@ -8,16 +8,10 @@ export function login(data) {
   })
 }
 
-/**
- * 此处将 params: { token } -> params: { access_token: token }
- * 用以适配我们后台
- * @param token
- */
-export function getInfo(token) {
+export function getInfo() {
   return request({
     url: '/user/info',
-    method: 'get',
-    params: { access_token: token }
+    method: 'get'
   })
 }
 
