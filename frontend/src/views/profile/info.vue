@@ -1,8 +1,18 @@
 <template>
   <div class="app-container">
-    <el-form ref="form" :model="form" label-width="120px">
+    <el-form
+      ref="form"
+      v-loading="formLoading"
+      :data="form"
+      element-loading-text="加载中..."
+      :model="form"
+      label-width="120px"
+    >
+      <el-form-item label="头像">
+        <img :src="form.icon" width="60" height="60">
+      </el-form-item>
       <el-form-item label="账号">
-        <el-input v-model="form.username" />
+        <el-input v-model="form.username" :disabled="true" />
       </el-form-item>
       <el-form-item label="邮箱">
         <el-input v-model="form.email" />
@@ -33,13 +43,15 @@
 </template>
 
 <script>
-import { info } from '../../api/profile'
+import { info } from '@/api/profile'
 
 export default {
-  name: 'Profile',
+  name: 'ProfileInfo',
   data() {
     return {
+      formLoading: true,
       form: {
+        icon: '',
         username: '',
         email: '',
         nickName: '',
@@ -57,6 +69,7 @@ export default {
     fetchData() {
       info(this.$store.getters.name).then(response => {
         this.form = response.data
+        this.formLoading = false
       })
     },
     onSubmit() {

@@ -56,22 +56,22 @@ export const constantRoutes = [
   },
 
   {
-    path: '/user',
+    path: '/profile',
     component: Layout,
-    redirect: '/user/profile',
-    name: 'User',
+    redirect: '/profile/info',
+    name: 'Profile',
     meta: { title: '个人信息', icon: 'user' },
     children: [
       {
-        path: 'profile',
-        name: 'Profile',
-        component: () => import('@/views/profile/index'),
+        path: 'info',
+        name: 'ProfileInfo',
+        component: () => import('@/views/profile/info'),
         meta: { title: '修改信息' }
       },
       {
         path: 'password',
-        name: 'Password',
-        component: () => import('@/views/password/index'),
+        name: 'ProfilePassword',
+        component: () => import('@/views/profile/password'),
         meta: { title: '修改密码' }
       }
     ]
