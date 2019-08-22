@@ -24,6 +24,9 @@ import java.util.Date;
 @Data
 @Table(name = "ums_admin")
 public class UmsAdmin implements Serializable {
+
+    private static final long serialVersionUID = -5604007880179803027L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "JDBC")
@@ -78,6 +81,4 @@ public class UmsAdmin implements Serializable {
      */
     @Column(name = "`status`")
     private Integer status;
-
-    private static final long serialVersionUID = 1L;
 }

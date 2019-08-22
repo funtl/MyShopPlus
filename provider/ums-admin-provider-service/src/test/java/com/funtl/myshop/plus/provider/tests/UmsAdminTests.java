@@ -57,4 +57,17 @@ public class UmsAdminTests {
         Assert.assertEquals(result, 1);
     }
 
+    @Test
+    public void testUpdate() {
+        UmsAdmin umsAdmin = new UmsAdmin();
+        umsAdmin.setId(3L);
+        umsAdmin.setUsername("admin");
+        umsAdmin.setEmail("topsale@vip.qq.com");
+        umsAdmin.setNickName("超级管理员");
+        umsAdmin.setNote("超级管理员");
+        umsAdmin.setStatus(1);
+
+        int result = umsAdminService.update(umsAdmin);
+        Assert.assertEquals(result, 1);
+    }
 }
