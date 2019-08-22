@@ -4,7 +4,7 @@ import com.funtl.myshop.plus.business.dto.ProfileParam;
 import com.funtl.myshop.plus.commons.utils.MapperUtils;
 import org.junit.Test;
 
-public class PrintTests {
+public class PrintJsonTests {
 
     @Test
     public void testPrintProfileParam() throws Exception {
