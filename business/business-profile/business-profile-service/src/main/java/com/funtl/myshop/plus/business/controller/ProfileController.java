@@ -1,5 +1,6 @@
 package com.funtl.myshop.plus.business.controller;
 
+import com.funtl.myshop.plus.business.dto.IconParam;
 import com.funtl.myshop.plus.business.dto.PasswordParam;
 import com.funtl.myshop.plus.business.dto.ProfileParam;
 import com.funtl.myshop.plus.commons.dto.ResponseResult;
@@ -97,5 +98,26 @@ public class ProfileController {
         }
 
         return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "修改密码失败");
+    }
+
+    /**
+     * 修改头像
+     *
+     * @param iconParam {@link IconParam}
+     * @return {@link ResponseResult}
+     */
+    @PostMapping(value = "modify/icon")
+    public ResponseResult<Void> modifyIcon(@RequestBody IconParam iconParam) {
+        int result = umsAdminService.modifyIcon(iconParam.getUsername(), iconParam.getPath());
+
+        // 成功
+        if (result > 0) {
+            return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "更新头像成功");
+        }
+
+        // 失败
+        else {
+            return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "更新头像失败");
+        }
     }
 }

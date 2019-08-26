@@ -70,6 +70,13 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         return umsAdminMapper.updateByPrimaryKey(umsAdmin);
     }
 
+    @Override
+    public int modifyIcon(String username, String path) {
+        UmsAdmin umsAdmin = get(username);
+        umsAdmin.setIcon(path);
+        return umsAdminMapper.updateByPrimaryKey(umsAdmin);
+    }
+
     /**
      * 初始化用户对象
      *

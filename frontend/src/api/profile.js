@@ -34,3 +34,15 @@ export function modifyPassword(data) {
     data
   })
 }
+
+/**
+ * 更新头像
+ * @param data
+ */
+export function modifyIcon(data) {
+  return request({
+    url: '/profile/modify/icon',
+    method: 'post',
+    data
+  })
+}
