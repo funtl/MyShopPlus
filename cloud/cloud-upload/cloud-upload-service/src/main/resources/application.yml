@@ -1,0 +1,40 @@
+base:
+  config:
+    oauth:
+      hostname: localhost
+      port: 9001
+    nacos:
+      hostname: nacos.funtl.com
+      port: 80
+
+spring:
+  application:
+    name: cloud-upload
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/token
+      user-authorization-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/authorize
+    resource:
+      token-info-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/check_token
+
+server:
+  port: 10001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

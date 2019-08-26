@@ -103,6 +103,34 @@ Feign 传递 Token | ✔
 获取 Token | ✔ 
 刷新 Token | 
 
+## 后台服务规划
+
+### 数据访问
+
+服务名 | 端口 | 说明 
+----|----|----
+ums-admin-provider | 随机 | 用户服务提供者
+
+### 业务逻辑
+
+服务名 | 端口 | 说明 
+----|----|----
+business-reg | 9000 | 注册服务
+business-oauth2 | 9001 | 认证服务
+business-profile | 9002 | 个人信息管理服务
+
+### 云服务
+
+服务名 | 端口 | 说明 
+----|----|----
+cloud-upload | 10001 | 文件上传服务
+
+### 网关
+
+服务名 | 端口 | 说明 
+----|----|----
+gateway | 8888 | Spring Cloud Gateway
+
 ## 基础设施规划
 
 ### Docker

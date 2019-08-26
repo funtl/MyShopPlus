@@ -21,6 +21,9 @@
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <spring-cloud-alibaba.verion>2.1.0.RELEASE</spring-cloud-alibaba.verion>
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
+
+        <!-- Ali Cloud -->
+        <aliyun-sdk-oss.version>3.6.0</aliyun-sdk-oss.version>
     </properties>
 
     <licenses>
@@ -56,6 +59,13 @@
                 <version>${spring-cloud-alibaba.verion}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- Ali Cloud -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-sdk-oss.version}</version>
             </dependency>
 
             <!-- Apache Dubbo -->
