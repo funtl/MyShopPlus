@@ -27,6 +27,6 @@ public interface UploadFeign {
      * @return {@code String} 文件上传路径
      */
     @PostMapping(value = "")
-    String upload(MultipartFile multipartFile);
+    String upload(@RequestPart(value = "multipartFile") MultipartFile multipartFile);
 
 }
