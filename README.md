@@ -6,7 +6,7 @@
 
 ## 开发工具
 
-工具 | 下载地址 
+工具 | 地址 
 ----|----
 Intellij IDEA | https://www.jetbrains.com/idea/download 
 SwitchHosts | https://oldj.github.io/SwitchHosts/
@@ -17,38 +17,46 @@ PicPick | https://picpick.app/zh/download
 亿图图示 | https://www.edrawsoft.cn/edrawmax/ 
 亿图导图 | https://www.edrawsoft.cn/mindmaster/ 
 
+## 商业组件
+
+组件 | 说明 
+----|----
+Aliyun SDK OSS | 阿里云对象存储服务
+
 ## 后端技术
 
-技术 | 说明 
-----|----
-Spring Boot | 新一代 JavaEE 开发标准 
-Spring Cloud Alibaba | 阿里巴巴基于 Spring Cloud 编程模型的微服务生态 
-Spring Cloud Alibaba Dubbo | 与 Spring Cloud Alibaba 生态相结合的高性能 Java RPC 框架 
-Spring Security oAuth2 | 安全认证和授权框架 
-Spring Social | 第三方登录接入框架 
-TkMyBatis | 基于 MyBatis 二次开发的轻量级框架，用于简化 MyBatis 操作 
-MyBatisGenerator | Maven 插件，用于 MyBatis 相关代码生成 
-MybatisCodeHelper | Intellij IDEA 插件，用于 MyBatis 相关代码生成 
-PageHelper | MyBatis 分页插件 
-Swagger | API 文档生成工具
-HikariCP | 数据库连接池 
-Docker | 容器化引擎 
-Docker Compose | 容器编排工具 
-Kubernetes | 容器编排系统 
-TiDB | 分布式数据库 
-OKHttp3 | 轻量级网络框架 
+技术 | 说明 | 地址
+----|----|----
+Spring Boot | 新一代 JavaEE 开发标准 | https://github.com/spring-projects/spring-boot
+Spring Cloud Alibaba | 阿里巴巴基于 Spring Cloud 编程模型的微服务生态 | https://github.com/alibaba/spring-cloud-alibaba
+Spring Cloud Alibaba Dubbo | 与 Spring Cloud Alibaba 生态相结合的高性能 Java RPC 框架 | https://github.com/apache/dubbo
+Spring Security oAuth2 | 安全认证和授权框架 | https://github.com/spring-projects/spring-security-oauth
+Spring Social | 第三方登录接入框架 | https://github.com/spring-projects/spring-social
+TkMyBatis | 基于 MyBatis 二次开发的轻量级框架，用于简化 MyBatis 操作 | https://github.com/abel533/Mapper
+MyBatisGenerator | Maven 插件，用于 MyBatis 相关代码生成 | http://www.mybatis.org/generator/
+MybatisCodeHelper | Intellij IDEA 插件，用于 MyBatis 相关代码生成 | https://plugins.jetbrains.com/plugin/9837-mybatiscodehelperpro
+PageHelper | MyBatis 分页插件 | https://github.com/pagehelper/Mybatis-PageHelper
+Swagger | API 文档生成工具 | https://github.com/swagger-api/swagger-ui
+HikariCP | 数据库连接池 | https://github.com/brettwooldridge/HikariCP
+Docker | 容器化引擎 | https://www.docker.com/
+Docker Compose | 容器编排工具 | https://docs.docker.com/compose/
+Kubernetes | 容器编排系统 | https://kubernetes.io/
+TiDB | 分布式数据库 | https://pingcap.com/
+OKHttp3 | 轻量级网络框架 | https://github.com/square/okhttp
+Feign | 声明式 HTTP 客户端 | https://github.com/OpenFeign/feign
 
 ## 前端技术
 
-技术 | 说明 
-----|----
-Vue | 前端框架，MVVM 模式的实现者 
-Vue CLI | Vue 脚手架，基于 NodeJS 
-Vue Router | Vue 路由框架 
-Vuex | Vue 全局状态管理框架 
-Axios | 前端 HTTP 框架 
-Element UI | 饿了么 UI 框架 
-Vue Element Admin | 基于 Element UI 的前端后台解决方案 
+技术 | 说明 | 地址
+----|----|----
+Vue | 前端框架，MVVM 模式的实现者 | https://github.com/vuejs/vue
+Vue CLI | Vue 脚手架，基于 NodeJS | https://github.com/vuejs/vue-cli
+Vue Router | Vue 路由框架 | https://github.com/vuejs/vue-router
+Vuex | Vue 全局状态管理框架 | https://github.com/vuejs/vuex
+Axios | 前端 HTTP 框架 | https://github.com/axios/axios
+Element UI | 饿了么 UI 框架 | https://element.eleme.cn
+Vue Element Admin | 基于 Element UI 的前端后台解决方案 | https://github.com/PanJiaChen/vue-element-admin
+Vue Image Crop Upload | Vue 图片剪裁上传组件 | https://github.com/dai-siki/vue-image-crop-upload
 
 ## 框架集成
 
@@ -78,8 +86,10 @@ Feign 传递 Token | ✔
 
 功能 | 完成 
 ----|----
-查看个人信息 | ✔ 
-编辑个人信息 | ✔ 
+查看信息 | ✔ 
+更新信息 | ✔ 
+更新密码 | ✔ 
+更新头像 | ✔ 
 
 ### 权限管理
 
@@ -102,6 +112,7 @@ Feign 传递 Token | ✔
 用户登录 | ✔ 
 获取 Token | ✔ 
 刷新 Token | 
+头像上传 | ✔
 
 ## 后台服务规划
 
