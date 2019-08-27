@@ -9,7 +9,7 @@ import com.funtl.myshop.plus.commons.utils.MapperUtils;
 import org.springframework.stereotype.Component;
 
 /**
- * 个人信息服务熔断类
+ * 个人信息服务熔断器
  * <p>
  * Description:
  * </p>
