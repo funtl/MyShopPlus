@@ -1,0 +1,61 @@
+base:
+  config:
+    oauth:
+      hostname: localhost
+      port: 9001
+    nacos:
+      hostname: nacos.funtl.com
+      port: 80
+    sentile:
+      hostname: localhost
+      port: 8080
+
+spring:
+  application:
+    name: business-profile
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
+    sentinel:
+      transport:
+        dashboard: ${base.config.sentile.hostname}:${base.config.sentile.port}
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/token
+      user-authorization-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/authorize
+    resource:
+      token-info-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/check_token
+
+dubbo:
+  scan:
+    base-packages: com.funtl.myshop.plus.business.controller
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
+
+server:
+  port: 9002
+
+feign:
+  sentinel:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

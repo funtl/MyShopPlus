@@ -65,6 +65,7 @@ Vue Image Crop Upload | Vue 图片剪裁上传组件 | [GitHub](https://github.c
 Spring Boot | ✔
 Spring Cloud Alibaba | ✔ 
 Spring Cloud Alibaba Dubbo | ✔ 
+Spring Cloud Alibaba Sentinel | ✔ 
 Spring Security oAuth2 | ✔ 
 TkMyBatis | ✔ 
 HikariCP | ✔ 
