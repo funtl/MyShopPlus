@@ -2,6 +2,9 @@
 
 ## 概述
 
+- [**项目学习视频**](https://www.bilibili.com/video/av62628434/)
+- [**项目学习文档**](http://www.qfdmy.com/%E8%AF%BE%E7%A8%8B/%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84-2-0/?tab=tab-curriculum)
+
 **MyShopPlus** 项目致力于推广并普及 **微服务架构** 思想，采用全新 **服务网格** 系统打造电商生态级产品。
 
 ## 开发工具
