@@ -5,12 +5,12 @@
 
     <parent>
         <groupId>com.funtl.myshop.plus</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>configuration</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>configuration</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>configuration-sentinel</artifactId>
+    <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
 
@@ -29,8 +29,23 @@
         </developer>
     </developers>
 
-    <modules>
-        <module>configuration-feign</module>
-        <module>configuration-sentinel</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-apache-dubbo-adapter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-transport-simple-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-annotation-aspectj</artifactId>
+        </dependency>
+    </dependencies>
 </project>

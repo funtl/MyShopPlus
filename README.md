@@ -19,9 +19,9 @@ PicPick | https://picpick.app/zh/download
 
 ## 商业组件
 
-组件 | 说明 
-----|----
-Aliyun SDK OSS | 阿里云对象存储服务
+服务 | 说明 | 地址
+----|----|----
+Aliyun SDK OSS | 阿里云对象存储服务 | [官网](https://help.aliyun.com/product/31815.html?spm=a2c4g.750001.list.19.3cce7b13L4uLgg)
 
 ## 后端技术
 
