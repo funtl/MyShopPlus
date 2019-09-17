@@ -1,5 +1,8 @@
 base:
   config:
+    tidb:
+      hostname: tidb.funtl.com
+      port: 4000
     nacos:
       hostname: nacos.funtl.com
       port: 80
@@ -22,6 +25,21 @@ spring:
     sentinel:
       transport:
         dashboard: ${base.config.sentile.hostname}:${base.config.sentile.port}
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://${base.config.tidb.hostname}:${base.config.tidb.port}/mplus_ums_oauth2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password:
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
 
 dubbo:
   scan:

@@ -16,7 +16,7 @@ public class BusinessOAuth2Tests {
 
     @Test
     public void testPasswordEncoder() {
-        System.out.println(passwordEncoder.encode("123456"));
+        System.out.println(passwordEncoder.encode("secret"));
     }
 
 }
