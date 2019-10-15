@@ -9,6 +9,9 @@ base:
     sentile:
       hostname: localhost
       port: 8080
+    redis:
+      hostname: redis.funtl.com
+      port: 6380
 
 spring:
   application:
@@ -40,6 +43,15 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+  redis:
+    host: ${base.config.redis.hostname}
+    port: ${base.config.redis.port}
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1ms
+        max-active: 8
 
 dubbo:
   scan:
