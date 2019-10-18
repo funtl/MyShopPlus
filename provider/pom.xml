@@ -87,13 +87,20 @@
         <!-- Projects -->
         <dependency>
             <groupId>com.funtl.myshop.plus</groupId>
+            <artifactId>commons-provider</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.funtl.myshop.plus</groupId>
             <artifactId>configuration-sentinel</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 
     <modules>
-        <module>ums-admin-provider-api</module>
-        <module>ums-admin-provider-service</module>
+        <module>provider-admin-api</module>
+        <module>provider-admin-service</module>
+        <module>provider-admin-login-log-api</module>
+        <module>provider-admin-login-log-service</module>
     </modules>
 </project>

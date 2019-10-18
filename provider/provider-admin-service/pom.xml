@@ -5,11 +5,11 @@
 
     <parent>
         <groupId>com.funtl.myshop.plus</groupId>
-        <artifactId>business</artifactId>
+        <artifactId>provider</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-reg-service</artifactId>
+    <artifactId>provider-admin-service</artifactId>
     <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
@@ -33,7 +33,7 @@
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,10 +45,35 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Spring Cloud Alibaba -->
+        <!-- Spring Cloud -->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+
+        <!-- DataSource -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <exclusions>
+                <!-- 排除 tomcat-jdbc 以使用 HikariCP -->
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
         </dependency>
 
         <!-- Projects -->
@@ -65,7 +90,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.funtl.myshop.plus.business.BusinessRegApplication</mainClass>
+                    <mainClass>com.funtl.myshop.plus.provider.ProviderAdminApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

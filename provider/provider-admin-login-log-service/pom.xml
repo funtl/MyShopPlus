@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ums-admin-provider-service</artifactId>
+    <artifactId>provider-admin-login-log-service</artifactId>
     <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
@@ -37,14 +37,12 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <!-- Spring Cloud -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
 
         <!-- DataSource -->
@@ -75,7 +73,7 @@
         <!-- Projects -->
         <dependency>
             <groupId>com.funtl.myshop.plus</groupId>
-            <artifactId>ums-admin-provider-api</artifactId>
+            <artifactId>provider-admin-login-log-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
@@ -86,7 +84,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.funtl.myshop.plus.provider.UmsAdminProviderApplication</mainClass>
+                    <mainClass>com.funtl.myshop.plus.provider.ProviderAdminLoginLogApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

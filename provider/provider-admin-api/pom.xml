@@ -5,12 +5,12 @@
 
     <parent>
         <groupId>com.funtl.myshop.plus</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>provider</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>commons</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>provider-admin-api</artifactId>
+    <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
 
@@ -28,17 +28,4 @@
             <email>lee.lusifer@gmail.com</email>
         </developer>
     </developers>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-    </dependencies>
-
-    <modules>
-        <module>commons-dto</module>
-        <module>commons-utils</module>
-        <module>commons-provider</module>
-    </modules>
 </project>

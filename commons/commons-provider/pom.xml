@@ -5,12 +5,12 @@
 
     <parent>
         <groupId>com.funtl.myshop.plus</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>commons</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>commons</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>commons-provider</artifactId>
+    <packaging>jar</packaging>
     <url>http://www.funtl.com</url>
     <inceptionYear>2018-Now</inceptionYear>
 
@@ -34,11 +34,20 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+        </dependency>
 
-    <modules>
-        <module>commons-dto</module>
-        <module>commons-utils</module>
-        <module>commons-provider</module>
-    </modules>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funtl.myshop.plus.provider.mapper.UmsAdminLoginLogMapper">
+  <resultMap id="BaseResultMap" type="com.funtl.myshop.plus.provider.domain.UmsAdminLoginLog">
+    <!--@mbg.generated generated on Fri Oct 18 18:21:06 CST 2019.-->
+    <!--@Table ums_admin_login_log-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="admin_id" jdbcType="BIGINT" property="adminId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="user_agent" jdbcType="VARCHAR" property="userAgent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Oct 18 18:21:06 CST 2019.-->
+    id, admin_id, create_time, ip, address, user_agent
+  </sql>
+</mapper>

@@ -28,11 +28,4 @@
             <email>lee.lusifer@gmail.com</email>
         </developer>
     </developers>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-    </dependencies>
 </project>

@@ -5,12 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tk.mybatis.spring.annotation.MapperScan;
 
-@SpringBootApplication(scanBasePackageClasses = {UmsAdminProviderApplication.class, DubboSentinelConfiguration.class})
+@SpringBootApplication(scanBasePackageClasses = {ProviderAdminLoginLogApplication.class, DubboSentinelConfiguration.class})
 @MapperScan(basePackages = "com.funtl.myshop.plus.provider.mapper")
-public class UmsAdminProviderApplication {
+public class ProviderAdminLoginLogApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UmsAdminProviderApplication.class, args);
+        SpringApplication.run(ProviderAdminLoginLogApplication.class, args);
     }
 
 }
