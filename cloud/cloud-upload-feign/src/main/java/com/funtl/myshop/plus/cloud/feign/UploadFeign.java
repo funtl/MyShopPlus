@@ -1,5 +1,6 @@
 package com.funtl.myshop.plus.cloud.feign;
 
+import com.funtl.myshop.plus.cloud.feign.fallback.UploadFeignFallback;
 import com.funtl.myshop.plus.configuration.FeignRequestConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @date 2019-08-26 06:31:08
  * @see com.funtl.myshop.plus.cloud.feign
  */
-@FeignClient(value = "cloud-upload", path = "upload", configuration = FeignRequestConfiguration.class)
+@FeignClient(value = "cloud-upload", path = "upload", configuration = FeignRequestConfiguration.class, fallback = UploadFeignFallback.class)
 public interface UploadFeign {
 
     /**
