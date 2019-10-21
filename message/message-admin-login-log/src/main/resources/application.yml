@@ -1,0 +1,37 @@
+base:
+  config:
+    rocketmq:
+      hostname: rocketmq.funtl.com
+      port: 9876
+    nacos:
+      hostname: nacos.funtl.com
+      port: 80
+
+spring:
+  application:
+    name: message-admin-login-log
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: ${base.config.rocketmq.hostname}:${base.config.rocketmq.port}
+        bindings:
+          admin-login-log-topic: {consumer.orderly: true}
+      bindings:
+        admin-login-log-topic: {destination: admin-login-log-topic, content-type: text/plain, group: admin-login-log-group, consumer.maxAttempts: 1}
+
+dubbo:
+  scan:
+    base-packages: com.funtl.myshop.plus.message.consumer
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
+
+server:
+  port: 20001

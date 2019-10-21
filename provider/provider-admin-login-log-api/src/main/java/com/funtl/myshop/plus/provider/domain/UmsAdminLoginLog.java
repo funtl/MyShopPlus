@@ -1,5 +1,6 @@
 package com.funtl.myshop.plus.provider.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -34,6 +35,7 @@ public class UmsAdminLoginLog implements Serializable {
     @Column(name = "admin_id")
     private Long adminId;
 
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_time")
     private Date createTime;
 
