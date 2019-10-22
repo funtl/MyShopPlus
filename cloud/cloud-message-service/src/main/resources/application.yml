@@ -29,6 +29,17 @@ spring:
       bindings:
         admin-login-log-topic: {destination: admin-login-log-topic, content-type: application/json}
 
+dubbo:
+  scan:
+    base-packages: com.funtl.myshop.plus.cloud.producer
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
+
 security:
   oauth2:
     client:

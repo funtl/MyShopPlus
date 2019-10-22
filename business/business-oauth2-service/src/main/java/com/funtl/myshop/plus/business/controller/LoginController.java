@@ -3,12 +3,18 @@ package com.funtl.myshop.plus.business.controller;
 import com.funtl.myshop.plus.business.dto.LoginInfo;
 import com.funtl.myshop.plus.business.dto.LoginParam;
 import com.funtl.myshop.plus.business.feign.ProfileFeign;
+import com.funtl.myshop.plus.cloud.api.MessageService;
+import com.funtl.myshop.plus.cloud.dto.UmsAdminLoginLogDTO;
 import com.funtl.myshop.plus.commons.dto.ResponseResult;
 import com.funtl.myshop.plus.commons.utils.MapperUtils;
 import com.funtl.myshop.plus.commons.utils.OkHttpClientUtil;
+import com.funtl.myshop.plus.commons.utils.UserAgentUtils;
+import com.funtl.myshop.plus.provider.api.UmsAdminService;
 import com.funtl.myshop.plus.provider.domain.UmsAdmin;
 import com.google.common.collect.Maps;
+import eu.bitwalker.useragentutils.Browser;
 import okhttp3.Response;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -25,6 +31,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 
@@ -65,6 +73,12 @@ public class LoginController {
     @Resource
     private ProfileFeign profileFeign;
 
+    @Reference(version = "1.0.0")
+    private UmsAdminService umsAdminService;
+
+    @Reference(version = "1.0.0")
+    private MessageService messageService;
+
     /**
      * 登录
      *
@@ -72,7 +86,7 @@ public class LoginController {
      * @return {@link ResponseResult}
      */
     @PostMapping(value = "/user/login")
-    public ResponseResult<Map<String, Object>> login(@RequestBody LoginParam loginParam) {
+    public ResponseResult<Map<String, Object>> login(@RequestBody LoginParam loginParam, HttpServletRequest request) throws Exception {
         // 封装返回的结果集
         Map<String, Object> result = Maps.newHashMap();
 
@@ -97,6 +111,9 @@ public class LoginController {
             Map<String, Object> jsonMap = MapperUtils.json2map(jsonString);
             String token = String.valueOf(jsonMap.get("access_token"));
             result.put("token", token);
+
+            // 发送登录日志
+            sendAdminLoginLog(userDetails.getUsername(), request);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -146,5 +163,30 @@ public class LoginController {
         OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
         tokenStore.removeAccessToken(oAuth2AccessToken);
         return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "用户已注销");
+    }
+
+    /**
+     * 发送登录日志
+     *
+     * @param request {@link HttpServletRequest}
+     */
+    private void sendAdminLoginLog(String username, HttpServletRequest request) {
+        UmsAdmin umsAdmin = umsAdminService.get(username);
+
+        if (umsAdmin != null) {
+            // 获取请求的用户代理信息
+            Browser browser = UserAgentUtils.getBrowser(request);
+            String ip = UserAgentUtils.getIpAddr(request);
+            String address = UserAgentUtils.getIpInfo(ip).getCity();
+
+            UmsAdminLoginLogDTO dto = new UmsAdminLoginLogDTO();
+            dto.setAdminId(umsAdmin.getId());
+            dto.setCreateTime(new Date());
+            dto.setIp(ip);
+            dto.setAddress(address);
+            dto.setUserAgent(browser.getName());
+
+            messageService.sendAdminLoginLog(dto);
+        }
     }
 }

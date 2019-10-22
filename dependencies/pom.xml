@@ -12,6 +12,7 @@
     <properties>
         <!-- Commons -->
         <okhttp3.version>4.1.0</okhttp3.version>
+        <bitwalker.version>1.21</bitwalker.version>
         <feign-okhttp.version>10.3.0</feign-okhttp.version>
 
         <!-- Native Cloud -->
@@ -163,6 +164,11 @@
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-okhttp</artifactId>
                 <version>${feign-okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${bitwalker.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

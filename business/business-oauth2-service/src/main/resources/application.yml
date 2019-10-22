@@ -31,7 +31,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://${base.config.tidb.hostname}:${base.config.tidb.port}/mplus_ums_oauth2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    jdbc-url: jdbc:mysql://${base.config.tidb.hostname}:${base.config.tidb.port}/mplus_ums_oauth2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
     username: root
     password:
     hikari:

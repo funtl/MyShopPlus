@@ -12,6 +12,9 @@ spring:
     name: message-admin-login-log
   main:
     allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
   cloud:
     stream:
       rocketmq:
