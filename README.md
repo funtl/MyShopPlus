@@ -126,7 +126,8 @@ Feign 传递 Token | ✔
 
 服务名 | 端口 | 说明 
 ----|----|----
-ums-admin-provider | 随机 | 用户服务提供者
+provider-admin | 随机 | 管理员服务提供者 
+provider-admin-login-log | 随机 | 登录日志服务提供者 
 
 ### 业务逻辑
 
@@ -141,6 +142,13 @@ business-profile | 9002 | 个人信息管理服务
 服务名 | 端口 | 说明 
 ----|----|----
 cloud-upload | 10001 | 文件上传服务
+cloud-message | 10002 | 消息队列服务 
+
+### 消息队列
+
+服务名 | 端口 | 说明 
+----|----|----
+message-admin-login-log | 20001 | 管理员登录日志消费者 
 
 ### 网关
 
