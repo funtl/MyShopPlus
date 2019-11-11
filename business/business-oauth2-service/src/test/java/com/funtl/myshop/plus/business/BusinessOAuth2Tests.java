@@ -14,6 +14,7 @@ public class BusinessOAuth2Tests {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+
     @Test
     public void testPasswordEncoder() {
         System.out.println(passwordEncoder.encode("secret"));

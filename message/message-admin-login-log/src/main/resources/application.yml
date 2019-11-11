@@ -1,11 +1,11 @@
 base:
   config:
     rocketmq:
-      hostname: rocketmq.funtl.com
+      hostname: 129.211.60.191
       port: 9876
     nacos:
-      hostname: nacos.funtl.com
-      port: 80
+      hostname: 129.211.60.191
+      port: 8848
 
 spring:
   application:

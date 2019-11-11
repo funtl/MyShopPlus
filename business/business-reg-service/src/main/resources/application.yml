@@ -9,8 +9,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: nacos.funtl.com:80
-
+        server-addr: 129.211.60.191:8848
 dubbo:
   scan:
     base-packages: com.funtl.myshop.plus.business.controller
@@ -19,8 +18,8 @@ dubbo:
     port: -1
     serialization: kryo
   registry:
-    address: nacos://nacos.funtl.com
-    port: 80
+    address: nacos://129.211.60.191
+    port: 8848
 
 server:
   # ${random.int[9000,9999]} 随机端口
