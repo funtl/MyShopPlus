@@ -146,13 +146,11 @@ public class LoginController {
             Response response = OkHttpClientUtil.getInstance().postData(URL_OAUTH_TOKEN, params);
             String jsonString = Objects.requireNonNull(response.body()).string();
             Map<String, Object> jsonMap = MapperUtils.json2map(jsonString);
-            String token = String.valueOf(jsonMap.get("access_token"));
-            result.put("token", token);
-            tokenStore.readRefreshToken(token);
+            result.put("result", jsonMap);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new ResponseResult<Map<String, Object>>(ResponseResult.CodeStatus.OK, "登录成功", result);
+        return new ResponseResult<Map<String, Object>>(ResponseResult.CodeStatus.OK, "刷新token成功", result);
     }
 
 

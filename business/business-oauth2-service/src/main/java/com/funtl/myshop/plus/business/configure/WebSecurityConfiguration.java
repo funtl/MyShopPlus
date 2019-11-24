@@ -64,7 +64,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/user/login","/user/resfresh_token");
+                .antMatchers("/user/login", "/user/resfresh_token","/oauth/check_token","/oauth/refresh_token");
+
     }
 
     @Override
@@ -79,7 +80,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //                .and()
 //                .authorizeRequests()
-//                .antMatchers("/oauth/**").permitAll();;
+//                .antMatchers("/oauth/**").permitAll();
 
 //        http.exceptionHandling()
 //                .and()
