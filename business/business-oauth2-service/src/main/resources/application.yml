@@ -87,3 +87,4 @@ business:
     grant_type: password
     client_id: client
     client_secret: secret
+    refresh_type: refresh_token

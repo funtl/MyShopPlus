@@ -49,7 +49,7 @@ import javax.sql.DataSource;
  * @see com.funtl.myshop.plus.business.configure
  */
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer// 授权服务器核心注解
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
@@ -84,7 +84,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         // 基于 JDBC 实现，需要事先在数据库配置客户端信息
         return new JdbcClientDetailsService(dataSource());
     }
-
+    /**
+     * 声明授权和token的端点以及token的服务的一些配置信息，
+     * 比如采用什么存储方式、token的有效期等
+     * @param endpoints
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
@@ -92,12 +96,16 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .authenticationManager(authenticationManager)
                 .tokenStore(tokenStore());
     }
-
+    /**
+     * 声明安全约束，哪些允许访问，哪些不允许访问
+     * @param security
+     */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
                 // 允许客户端访问 /oauth/check_token 检查 token
                 .checkTokenAccess("isAuthenticated()")
+                // 允许表单认证
                 .allowFormAuthenticationForClients();
     }
 
@@ -110,6 +118,21 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // 客户端配置
+        // 1. 数据库的方式
         clients.withClientDetails(jdbcClientDetailsService());
+        // 2. 在内存中配置，这种方式不够灵活，学习倒是没有问题
+        // //配置两个客户端,一个用于password认证一个用于client认证
+        // clients.inMemory().withClient("client_1")
+        //         .resourceIds(DEMO_RESOURCE_ID)
+        //         .authorizedGrantTypes("client_credentials", "refresh_token")
+        //         .scopes("select")
+        //         .authorities("client")
+        //         .secret("123456")
+        //         .and().withClient("client_2")
+        //         .resourceIds(DEMO_RESOURCE_ID)
+        //         .authorizedGrantTypes("password", "refresh_token")
+        //         .scopes("select")
+        //         .authorities("client")
+        //         .secret("123456");
     }
 }
