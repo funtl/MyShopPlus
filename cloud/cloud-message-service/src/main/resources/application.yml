@@ -22,13 +22,20 @@ spring:
     nacos:
       discovery:
         server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
-    stream:
-      rocketmq:
-        binder:
-          name-server: ${base.config.rocketmq.hostname}:${base.config.rocketmq.port}
-      bindings:
-        admin-login-log-topic: {destination: admin-login-log-topic, content-type: application/json}
-
+  rabbitmq:
+    host: 129.211.60.191
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
+    #自定义配置
+    Q_NAME: spring-boot-queue-1
+    EXCHANG_NAME: spring-boot-exchange-1
+    BIND_KEY: spring-boot-bind-key-1
 dubbo:
   scan:
     base-packages: com.funtl.myshop.plus.cloud.producer
@@ -39,7 +46,8 @@ dubbo:
   registry:
     address: nacos://${base.config.nacos.hostname}
     port: ${base.config.nacos.port}
-
+  consumer:
+    timeout: 60000
 security:
   oauth2:
     client:

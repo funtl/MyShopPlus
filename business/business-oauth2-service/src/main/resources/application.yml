@@ -64,7 +64,8 @@ dubbo:
   registry:
     address: nacos://${base.config.nacos.hostname}
     port: ${base.config.nacos.port}
-
+  provider:
+    timeout: 6000
 feign:
   okhttp:
     enabled: true

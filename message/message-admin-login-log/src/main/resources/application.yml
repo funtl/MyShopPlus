@@ -15,16 +15,30 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-  cloud:
-    stream:
-      rocketmq:
-        binder:
-          name-server: ${base.config.rocketmq.hostname}:${base.config.rocketmq.port}
-        bindings:
-          admin-login-log-topic: {consumer.orderly: true}
-      bindings:
-        admin-login-log-topic: {destination: admin-login-log-topic, content-type: text/plain, group: admin-login-log-group, consumer.maxAttempts: 1}
-
+  #  cloud:
+  #    stream:
+  #      rocketmq:
+  #        binder:
+  #          name-server: ${base.config.rocketmq.hostname}:${base.config.rocketmq.port}
+  #        bindings:
+  #          admin-login-log-topic: {consumer.orderly: true}
+  #      bindings:
+  #        admin-login-log-topic: {destination: admin-login-log-topic, content-type: text/plain, group: admin-login-log-group, consumer.maxAttempts: 1}
+  rabbitmq:
+    host: 129.211.60.191
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 10
+    #自定义配置
+    Q_NAME: spring-boot-queue-1
+    EXCHANG_NAME: spring-boot-exchange-1
+    BIND_KEY: spring-boot-bind-key-1
 dubbo:
   scan:
     base-packages: com.funtl.myshop.plus.message.consumer

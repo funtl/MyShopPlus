@@ -1,3 +1,4 @@
+/*
 package com.funtl.myshop.plus.message.sink;
 
 import org.springframework.cloud.stream.annotation.Input;
@@ -9,3 +10,4 @@ public interface AdminLoginLogSink {
     SubscribableChannel adminLoginLog();
 
 }
+*/
