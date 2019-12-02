@@ -32,9 +32,17 @@ spring:
     virtual-host: /
     listener:
       simple:
+        ###手动ACk
         acknowledge-mode: manual
         concurrency: 5
         max-concurrency: 10
+        retry:
+          ####开启消费者重试
+          enabled: true
+          ####最大重试次数（默认无数次）
+          max-attempts: 5
+          ####重试间隔次数
+          initial-interval: 3000
     #自定义配置
     Q_NAME: spring-boot-queue-1
     EXCHANG_NAME: spring-boot-exchange-1

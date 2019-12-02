@@ -28,8 +28,18 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+    #publisher confirms 发送确认
     publisher-confirms: true
+    #returns callback ：
+    #   1.未送达exchange
+    #   2.送达exchange却未送道queue的消息 回调returnCallback.（注意）出现2情况时，publisher-confirms 回调的是true
     publisher-returns: true
+    #1.当mandatory标志位设置为true时，
+    #   如果exchange根据自身类型和消息routingKey无法找到一个合适的queue存储消息，
+    #   那么broker会调用basic.return方法将消息返还给生产者;
+    #2.当mandatory设置为false时，出现上述情况broker会直接将消息丢弃;通俗的讲，
+    #   mandatory标志告诉broker代理服务器至少将消息route到一个队列中，
+    #   否则就将消息return给发送者;
     template:
       mandatory: true
     #自定义配置

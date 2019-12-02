@@ -4,6 +4,7 @@ import com.funtl.myshop.plus.cloud.dto.UmsAdminLoginLogDTO;
 import com.funtl.myshop.plus.provider.api.UmsAdminLoginLogService;
 import com.funtl.myshop.plus.provider.domain.UmsAdminLoginLog;
 import com.rabbitmq.client.Channel;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -14,7 +15,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
+@Slf4j
 @Service
 public class AdminLoginLogReceive {
 
@@ -42,7 +43,7 @@ public class AdminLoginLogReceive {
     @RabbitListener(queues = "atguigu.news")
     @RabbitHandler
     public void onMessage(@Payload UmsAdminLoginLogDTO dto, Channel channel, @Headers Map<String, Object> headers) throws Exception {
-        System.err.println("--------------------------------------");
+        log.info(dto.toString());
         //手工ACK，这一步尤为重要，因为在配置文件中配置了手动 ACK，所有需要有 ACK 的动作。
         Long deliveryTag = (Long) headers.get(AmqpHeaders.DELIVERY_TAG);
         channel.basicAck(deliveryTag, false);
