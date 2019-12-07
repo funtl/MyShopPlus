@@ -143,6 +143,15 @@
 
     <repositories>
         <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
             <id>spring-milestone</id>
             <name>Spring Milestone</name>
             <url>https://repo.spring.io/milestone</url>
