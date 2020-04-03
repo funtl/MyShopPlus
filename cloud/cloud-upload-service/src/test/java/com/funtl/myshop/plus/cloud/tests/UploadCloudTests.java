@@ -37,8 +37,8 @@ import java.io.Writer;
 @SpringBootTest
 public class UploadCloudTests {
     private static String endpoint = "oss-cn-shenzhen.aliyuncs.com";
-    private static String accessKeyId = "LTAIUEM4x1YOqT0O";
-    private static String accessKeySecret = "XVRECYNWqS7uzssIXeNrcgKIamBjTh";
+    private static String accessKeyId = "";
+    private static String accessKeySecret = "";
     private static String bucketName = "javasite";
     private static String key = "test.txt";
 
