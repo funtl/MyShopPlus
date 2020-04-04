@@ -1,8 +1,8 @@
 base:
   config:
     nacos:
-      hostname: nacos.funtl.com
-      port: 80
+      hostname: 129.211.60.191
+      port: 8848
 
 spring:
   application:
@@ -30,7 +30,7 @@ spring:
           # Predicate 翻译过来是“谓词”的意思，必须，主要作用是匹配用户的请求，有很多种用法
           predicates:
             # 路径匹配，以 api 开头，直接配置是不生效的，看 filters 配置
-            - Path=/api/user/**
+            - Path=/api/user/**,/api/oauth/**
           filters:
             # 前缀过滤，默认配置下，我们的请求路径是 http://localhost:8888/business-oauth2/** 这时会路由到指定的服务
             # 此处配置去掉 1 个路径前缀，再配置上面的 Path=/api/**，就能按照 http://localhost:8888/api/** 的方式访问了

@@ -25,17 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 全局系统异常拦截
- * <p>
- * Description:
- * </p>
- *
- * @author Lusifer
- * @version v1.0.0
- * @date 2019-10-23 17:11:57
- * @see com.funtl.myshop.plus.gateway.exception
- */
 public class JsonExceptionHandler implements ErrorWebExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(JsonExceptionHandler.class);

@@ -4,6 +4,6 @@ import com.funtl.myshop.plus.cloud.dto.UmsAdminLoginLogDTO;
 
 public interface MessageService {
 
-    boolean sendAdminLoginLog(UmsAdminLoginLogDTO umsAdminLoginLogDTO);
+    void sendAdminLoginLog(UmsAdminLoginLogDTO umsAdminLoginLogDTO);
 
 }

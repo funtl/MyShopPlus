@@ -36,6 +36,12 @@
             <artifactId>provider-admin-login-log-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <!-- Projects -->
+        <dependency>
+            <groupId>com.funtl.myshop.plus</groupId>
+            <artifactId>cloud-message-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

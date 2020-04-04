@@ -1,17 +1,17 @@
 base:
   config:
     tidb:
-      hostname: tidb.funtl.com
-      port: 4000
+      hostname: 129.211.60.191
+      port: 3306
     nacos:
-      hostname: nacos.funtl.com
-      port: 80
+      hostname: 129.211.60.191
+      port: 8848
     sentile:
-      hostname: localhost
-      port: 8080
+      hostname: 129.211.60.191
+      port: 8088
     redis:
-      hostname: redis.funtl.com
-      port: 6380
+      hostname: 129.211.60.191
+      port: 6379
 
 spring:
   application:
@@ -33,7 +33,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     jdbc-url: jdbc:mysql://${base.config.tidb.hostname}:${base.config.tidb.port}/mplus_ums_oauth2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
     username: root
-    password:
+    password: 123456
     hikari:
       minimum-idle: 5
       idle-timeout: 600000
@@ -52,6 +52,7 @@ spring:
         max-idle: 8
         max-wait: -1ms
         max-active: 8
+    password: 123456
 
 dubbo:
   scan:
@@ -63,7 +64,8 @@ dubbo:
   registry:
     address: nacos://${base.config.nacos.hostname}
     port: ${base.config.nacos.port}
-
+  provider:
+    timeout: 6000
 feign:
   okhttp:
     enabled: true
@@ -86,3 +88,4 @@ business:
     grant_type: password
     client_id: client
     client_secret: secret
+    refresh_type: refresh_token

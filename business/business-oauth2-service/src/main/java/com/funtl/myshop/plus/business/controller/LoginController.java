@@ -4,6 +4,7 @@ import com.funtl.myshop.plus.business.BusinessException;
 import com.funtl.myshop.plus.business.BusinessStatus;
 import com.funtl.myshop.plus.business.dto.LoginInfo;
 import com.funtl.myshop.plus.business.dto.LoginParam;
+import com.funtl.myshop.plus.business.dto.OauthParam;
 import com.funtl.myshop.plus.business.feign.ProfileFeign;
 import com.funtl.myshop.plus.cloud.api.MessageService;
 import com.funtl.myshop.plus.cloud.dto.UmsAdminLoginLogDTO;
@@ -55,6 +56,8 @@ public class LoginController {
 
     @Value("${business.oauth2.grant_type}")
     public String oauth2GrantType;
+    @Value("${business.oauth2.refresh_type}")
+    public String oauth2RefreshType;
 
     @Value("${business.oauth2.client_id}")
     public String oauth2ClientId;
@@ -112,7 +115,7 @@ public class LoginController {
             Map<String, Object> jsonMap = MapperUtils.json2map(jsonString);
             String token = String.valueOf(jsonMap.get("access_token"));
             result.put("token", token);
-
+            result.put("result",jsonMap);
             // 发送登录日志
             sendAdminLoginLog(userDetails.getUsername(), request);
         } catch (Exception e) {
@@ -121,6 +124,35 @@ public class LoginController {
 
         return new ResponseResult<Map<String, Object>>(ResponseResult.CodeStatus.OK, "登录成功", result);
     }
+
+    /**
+     * 登录
+     *
+     * @param oauthParam 登录参数
+     * @return {@link ResponseResult}
+     */
+    @PostMapping(value = "/user/resfresh_token")
+    public ResponseResult<Map<String, Object>> resfresh_token(@RequestBody OauthParam oauthParam, HttpServletRequest request) throws Exception {
+        // 封装返回的结果集
+        Map<String, Object> result = Maps.newHashMap();
+        // 通过 HTTP 客户端请求登录接口
+        Map<String, String> params = Maps.newHashMap();
+        params.put("grant_type", oauth2RefreshType);
+        params.put("client_id", oauth2ClientId);
+        params.put("client_secret", oauth2ClientSecret);
+        params.put("refresh_token", oauthParam.getRefresh_token());
+        try {
+            // 解析响应结果封装并返回
+            Response response = OkHttpClientUtil.getInstance().postData(URL_OAUTH_TOKEN, params);
+            String jsonString = Objects.requireNonNull(response.body()).string();
+            Map<String, Object> jsonMap = MapperUtils.json2map(jsonString);
+            result.put("result", jsonMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseResult<Map<String, Object>>(ResponseResult.CodeStatus.OK, "刷新token成功", result);
+    }
+
 
     /**
      * 获取用户信息
